@@ -1,6 +1,6 @@
+use bellman::{ConstraintSystem, SynthesisError};
+use pairing::Engine;
 use rug::Integer;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, SynthesisError};
 
 use std::fmt::Debug;
 

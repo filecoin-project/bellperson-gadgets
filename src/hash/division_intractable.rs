@@ -1,9 +1,9 @@
+use crate::circuit::boolean::Boolean;
+use crate::circuit::num::AllocatedNum;
+use bellman::{ConstraintSystem, SynthesisError};
+use ff::PrimeField;
+use pairing::Engine;
 use rug::Integer;
-use sapling_crypto::bellman::pairing::ff::PrimeField;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, SynthesisError};
-use sapling_crypto::circuit::boolean::Boolean;
-use sapling_crypto::circuit::num::AllocatedNum;
 
 use std::str::FromStr;
 
@@ -20,8 +20,8 @@ const OFFSET_512: &str = "122600903769467117341200318916567960263611610899961298
 const OFFSET_128: &str = "320302797835264872593630364493262722277";
 
 pub mod helper {
+    use ff::PrimeField;
     use rug::Integer;
-    use sapling_crypto::bellman::pairing::ff::PrimeField;
 
     use super::super::low_k_bits;
     use super::super::HashDomain;
@@ -143,9 +143,9 @@ where
 mod test {
     use super::*;
 
-    use sapling_crypto::bellman::pairing::ff::PrimeField;
-    use sapling_crypto::bellman::{ConstraintSystem, SynthesisError};
-    use sapling_crypto::circuit::num::AllocatedNum;
+    use crate::circuit::num::AllocatedNum;
+    use bellman::{ConstraintSystem, SynthesisError};
+    use ff::PrimeField;
 
     use std::str::FromStr;
 

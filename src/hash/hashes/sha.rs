@@ -1,6 +1,6 @@
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::ConstraintSystem;
-use sapling_crypto::circuit::num::AllocatedNum;
+use crate::circuit::num::AllocatedNum;
+use bellman::ConstraintSystem;
+use pairing::Engine;
 
 use crate::util::bench::WitnessTimer;
 
@@ -19,13 +19,13 @@ pub fn sha256<E: Engine>(inputs: &[E::Fr]) -> E::Fr {
 }
 
 pub mod circuit {
+    use crate::circuit::boolean::Boolean;
+    use crate::circuit::num::AllocatedNum;
+    use crate::circuit::sha256::sha256 as sapling_sha256;
+    use bellman::ConstraintSystem;
+    use ff::{Field, PrimeField};
+    use pairing::Engine;
     use rug::Integer;
-    use sapling_crypto::bellman::pairing::ff::{Field, PrimeField};
-    use sapling_crypto::bellman::pairing::Engine;
-    use sapling_crypto::bellman::ConstraintSystem;
-    use sapling_crypto::circuit::boolean::Boolean;
-    use sapling_crypto::circuit::num::AllocatedNum;
-    use sapling_crypto::circuit::sha256::sha256 as sapling_sha256;
 
     use crate::util::convert::nat_to_f;
     use crate::util::convert::usize_to_f;

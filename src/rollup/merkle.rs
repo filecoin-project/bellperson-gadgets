@@ -1,11 +1,11 @@
 use rand::Rng;
 
-use sapling_crypto::bellman::{Circuit, ConstraintSystem};
-use sapling_crypto::circuit::ecc::EdwardsPoint;
-use sapling_crypto::circuit::num::AllocatedNum;
-use sapling_crypto::eddsa::{PrivateKey, PublicKey};
-use sapling_crypto::jubjub::edwards::Point;
-use sapling_crypto::jubjub::{FixedGenerators, JubjubEngine, JubjubParams, PrimeOrder};
+use crate::circuit::ecc::EdwardsPoint;
+use crate::circuit::num::AllocatedNum;
+use crate::eddsa::{PrivateKey, PublicKey};
+use crate::jubjub::edwards::Point;
+use crate::jubjub::{FixedGenerators, JubjubEngine, JubjubParams, PrimeOrder};
+use bellman::{Circuit, ConstraintSystem};
 
 use crate::hash;
 use crate::hash::circuit::CircuitHasher;

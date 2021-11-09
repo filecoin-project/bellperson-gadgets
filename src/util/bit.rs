@@ -1,8 +1,8 @@
 // (mostly from franklin-crypto)
-use sapling_crypto::bellman::pairing::ff::Field;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
-use sapling_crypto::circuit::boolean::Boolean;
+use crate::circuit::boolean::Boolean;
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use ff::Field;
+use pairing::Engine;
 
 use std::fmt::{self, Display, Formatter};
 

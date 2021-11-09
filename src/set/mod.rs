@@ -1,6 +1,6 @@
-use sapling_crypto::bellman::pairing::ff::PrimeField;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::ConstraintSystem;
+use bellman::ConstraintSystem;
+use ff::PrimeField;
+use pairing::Engine;
 
 use crate::hash::circuit::MaybeHashed;
 use crate::CResult;

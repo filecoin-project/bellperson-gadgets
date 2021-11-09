@@ -1,3 +1,8 @@
+use bellman::groth16::{
+    generate_random_parameters, prepare_prover, prepare_verifying_key, verify_proof,
+    ParameterSource, Parameters, Proof,
+};
+use bellman::{Circuit, SynthesisError};
 use bellperson_gadgets::group::RsaQuotientGroup;
 use bellperson_gadgets::hash::circuit::CircuitHasher;
 use bellperson_gadgets::hash::hashes::{Mimc, Pedersen, Poseidon, Sha256};
@@ -10,13 +15,8 @@ use bellperson_gadgets::set::rsa::{SetBench, SetBenchInputs, SetBenchParams};
 use bellperson_gadgets::set::GenSet;
 use bellperson_gadgets::util::verbose;
 use docopt::Docopt;
-use sapling_crypto::bellman::groth16::{
-    generate_random_parameters, prepare_prover, prepare_verifying_key, verify_proof,
-    ParameterSource, Parameters, Proof,
-};
-use sapling_crypto::bellman::pairing::bls12_381::Bls12;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{Circuit, SynthesisError};
+use pairing::bls12_381::Bls12;
+use pairing::Engine;
 use serde::Deserialize;
 
 use rand::{thread_rng, Rng};

@@ -1,5 +1,5 @@
+use ff::{PrimeField, PrimeFieldRepr};
 use rug::{integer::Order, Integer};
-use sapling_crypto::bellman::pairing::ff::{PrimeField, PrimeFieldRepr};
 
 /// Convert a field element to a natural number
 pub fn f_to_nat<F: PrimeField>(f: &F) -> Integer {
@@ -31,8 +31,8 @@ pub fn f_to_usize<F: PrimeField>(n: &F) -> usize {
 #[cfg(test)]
 mod test {
     use super::*;
-    use sapling_crypto::bellman::pairing::bn256::Fr;
-    use sapling_crypto::bellman::pairing::ff::PrimeField;
+    use ff::PrimeField;
+    use pairing::bn256::Fr;
 
     #[test]
     fn test_nat_to_f() {

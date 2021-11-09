@@ -6,9 +6,9 @@ pub mod pocklington;
 
 use std::clone::Clone;
 
+use ff::Field;
+use ff::PrimeField;
 use rug::Integer;
-use sapling_crypto::bellman::pairing::ff::Field;
-use sapling_crypto::bellman::pairing::ff::PrimeField;
 
 /// A representation of an integer domain to hash to
 #[derive(Clone, Debug)]
@@ -43,12 +43,12 @@ pub trait Hasher: Clone + Send + Sync {
 }
 
 pub mod circuit {
-    use sapling_crypto::bellman::pairing::ff::Field;
-    use sapling_crypto::bellman::pairing::ff::PrimeField;
-    use sapling_crypto::bellman::pairing::ff::ScalarEngine;
-    use sapling_crypto::bellman::pairing::Engine;
-    use sapling_crypto::bellman::{Circuit, ConstraintSystem};
-    use sapling_crypto::circuit::num::AllocatedNum;
+    use crate::circuit::num::AllocatedNum;
+    use bellman::{Circuit, ConstraintSystem};
+    use ff::Field;
+    use ff::PrimeField;
+    use ff::ScalarEngine;
+    use pairing::Engine;
 
     use std::clone::Clone;
 
@@ -156,7 +156,7 @@ pub mod circuit {
         use super::Bench;
         use crate::hash::hashes::{Mimc, Pedersen, Poseidon, Sha256};
         use crate::util::test_helpers::*;
-        use sapling_crypto::bellman::pairing::bn256::Bn256;
+        use pairing::bn256::Bn256;
 
         circuit_tests! {
                     bn256_poseidon_2: (Bench::from_hasher(Poseidon::<Bn256>::default(), 2), true),

@@ -1,8 +1,8 @@
 use rand::Rng;
 
-use sapling_crypto::bellman::pairing::ff::{PrimeField, PrimeFieldRepr};
-use sapling_crypto::eddsa::{PrivateKey, PublicKey, Signature};
-use sapling_crypto::jubjub::{FixedGenerators, JubjubEngine};
+use crate::eddsa::{PrivateKey, PublicKey, Signature};
+use crate::jubjub::{FixedGenerators, JubjubEngine};
+use ff::{PrimeField, PrimeFieldRepr};
 
 use crate::hash::Hasher;
 
@@ -95,13 +95,13 @@ pub struct SignedTx<E: JubjubEngine> {
 }
 
 pub mod circuit {
-    use sapling_crypto::bellman::pairing::ff::ScalarEngine;
-    use sapling_crypto::bellman::pairing::ff::{Field, PrimeField};
-    use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
-    use sapling_crypto::circuit::baby_eddsa::EddsaSignature;
-    use sapling_crypto::circuit::ecc::EdwardsPoint;
-    use sapling_crypto::circuit::num::AllocatedNum;
-    use sapling_crypto::jubjub::JubjubEngine;
+    use crate::circuit::baby_eddsa::EddsaSignature;
+    use crate::circuit::ecc::EdwardsPoint;
+    use crate::circuit::num::AllocatedNum;
+    use crate::jubjub::JubjubEngine;
+    use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+    use ff::ScalarEngine;
+    use ff::{Field, PrimeField};
     use std::clone::Clone;
     use std::sync::Arc;
 

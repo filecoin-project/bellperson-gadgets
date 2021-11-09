@@ -1,7 +1,5 @@
-pub use sapling_crypto::bellman::pairing::Engine;
-pub use sapling_crypto::bellman::{
-    ConstraintSystem, Index, LinearCombination, SynthesisError, Variable,
-};
+pub use bellman::{ConstraintSystem, Index, LinearCombination, SynthesisError, Variable};
+pub use pairing::Engine;
 
 use std::io::Error;
 use std::io::Write;

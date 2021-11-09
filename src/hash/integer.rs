@@ -1,9 +1,9 @@
-use sapling_crypto::bellman::pairing::ff::Field;
-use sapling_crypto::bellman::pairing::ff::PrimeField;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, SynthesisError};
-use sapling_crypto::circuit::boolean::Boolean;
-use sapling_crypto::circuit::num::AllocatedNum;
+use crate::circuit::boolean::Boolean;
+use crate::circuit::num::AllocatedNum;
+use bellman::{ConstraintSystem, SynthesisError};
+use ff::Field;
+use ff::PrimeField;
+use pairing::Engine;
 
 use super::circuit::CircuitHasher;
 use super::HashDomain;
@@ -12,9 +12,9 @@ use crate::util::num::Num;
 use crate::OptionExt;
 
 pub mod helper {
+    use ff::Field;
+    use ff::PrimeField;
     use rug::Integer;
-    use sapling_crypto::bellman::pairing::ff::Field;
-    use sapling_crypto::bellman::pairing::ff::PrimeField;
 
     use super::super::low_k_bits;
     use super::super::HashDomain;

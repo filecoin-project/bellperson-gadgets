@@ -1,10 +1,10 @@
+use bellman::Circuit;
 use bellperson_gadgets::hash::hashes::Poseidon;
+use bellperson_gadgets::jubjub::JubjubBls12;
 use bellperson_gadgets::rollup::{merkle, rsa};
 use bellperson_gadgets::util::bench::{ConstraintCounter, ConstraintProfiler};
 use docopt::Docopt;
-use sapling_crypto::bellman::pairing::bls12_381::Bls12;
-use sapling_crypto::bellman::Circuit;
-use sapling_crypto::jubjub::JubjubBls12;
+use pairing::bls12_381::Bls12;
 use serde::Deserialize;
 
 const USAGE: &str = "

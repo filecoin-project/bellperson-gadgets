@@ -1,9 +1,9 @@
+use crate::circuit::boolean::{AllocatedBit, Boolean};
+use crate::circuit::num::AllocatedNum;
+use bellman::{Circuit, ConstraintSystem, LinearCombination, SynthesisError};
+use ff::{PrimeField, ScalarEngine};
 use fnv::{FnvHashMap, FnvHashSet};
-use sapling_crypto::bellman::pairing::ff::{PrimeField, ScalarEngine};
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{Circuit, ConstraintSystem, LinearCombination, SynthesisError};
-use sapling_crypto::circuit::boolean::{AllocatedBit, Boolean};
-use sapling_crypto::circuit::num::AllocatedNum;
+use pairing::Engine;
 
 use std::collections::BTreeMap;
 use std::rc::Rc;

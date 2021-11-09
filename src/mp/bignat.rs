@@ -1,8 +1,8 @@
+use crate::circuit::boolean::Boolean;
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use ff::{Field, PrimeField};
+use pairing::Engine;
 use rug::Integer;
-use sapling_crypto::bellman::pairing::ff::{Field, PrimeField};
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
-use sapling_crypto::circuit::boolean::Boolean;
 
 use std::borrow::Borrow;
 use std::cmp::{max, min, Ordering};
@@ -317,7 +317,7 @@ impl<E: Engine> BigNat<E> {
         mut cs: CS,
         other: &Self,
     ) -> Result<Boolean, SynthesisError> {
-        use sapling_crypto::circuit::num::{AllocatedNum, Num};
+        use crate::circuit::num::{AllocatedNum, Num};
         let mut rolling = Boolean::Constant(true);
         if self.limbs.len() != other.limbs.len() {
             eprintln!(
@@ -2174,7 +2174,7 @@ mod tests {
 
     impl<'a, E: Engine> Circuit<E> for MillerRabinRound<'a> {
         fn synthesize<CS: ConstraintSystem<E>>(self, cs: &mut CS) -> Result<(), SynthesisError> {
-            use sapling_crypto::circuit::boolean::AllocatedBit;
+            use crate::circuit::boolean::AllocatedBit;
             let b = BigNat::alloc_from_nat(
                 cs.namespace(|| "b"),
                 || Ok(Integer::from_str(self.inputs.grab()?.b).unwrap()),
@@ -2337,7 +2337,7 @@ mod tests {
 
     impl<'a, E: Engine> Circuit<E> for MillerRabin<'a> {
         fn synthesize<CS: ConstraintSystem<E>>(self, cs: &mut CS) -> Result<(), SynthesisError> {
-            use sapling_crypto::circuit::boolean::AllocatedBit;
+            use crate::circuit::boolean::AllocatedBit;
             let n = BigNat::alloc_from_nat(
                 cs.namespace(|| "n"),
                 || Ok(Integer::from_str(self.inputs.grab()?.n).unwrap()),
@@ -2498,7 +2498,7 @@ mod tests {
 
     impl<'a, E: Engine> Circuit<E> for MillerRabin32<'a> {
         fn synthesize<CS: ConstraintSystem<E>>(self, cs: &mut CS) -> Result<(), SynthesisError> {
-            use sapling_crypto::circuit::boolean::AllocatedBit;
+            use crate::circuit::boolean::AllocatedBit;
             let n = BigNat::alloc_from_nat(
                 cs.namespace(|| "n"),
                 || Ok(Integer::from_str(self.inputs.grab()?.n).unwrap()),

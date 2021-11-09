@@ -1,7 +1,7 @@
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
-use sapling_crypto::circuit::boolean::Boolean;
-use sapling_crypto::circuit::num::AllocatedNum;
+use crate::circuit::boolean::Boolean;
+use crate::circuit::num::AllocatedNum;
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use pairing::Engine;
 
 use super::circuit::CircuitHasher;
 use super::integer::hash_to_integer;
@@ -11,8 +11,8 @@ use crate::util::num::Num;
 use crate::OptionExt;
 
 pub mod helper {
+    use ff::Field;
     use rug::Integer;
-    use sapling_crypto::bellman::pairing::ff::Field;
 
     use super::super::integer::helper::hash_to_integer;
     use super::super::{HashDomain, Hasher};
@@ -139,10 +139,10 @@ where
 mod test {
     use super::*;
 
+    use crate::circuit::num::AllocatedNum;
+    use bellman::{ConstraintSystem, SynthesisError};
+    use ff::PrimeField;
     use rug::Integer;
-    use sapling_crypto::bellman::pairing::ff::PrimeField;
-    use sapling_crypto::bellman::{ConstraintSystem, SynthesisError};
-    use sapling_crypto::circuit::num::AllocatedNum;
 
     use crate::hash::hashes::Poseidon;
     use crate::util::test_helpers::*;

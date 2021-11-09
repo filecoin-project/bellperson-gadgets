@@ -1,6 +1,6 @@
-use sapling_crypto::bellman::pairing::ff::Field;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use ff::Field;
+use pairing::Engine;
 
 use std::cmp::max;
 use std::fmt::{self, Debug, Formatter};
@@ -140,10 +140,10 @@ impl<E: Engine> Polynomial<E> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::circuit::test::TestConstraintSystem;
     use crate::util::convert::usize_to_f;
-    use sapling_crypto::bellman::pairing::bn256::{Bn256, Fr};
-    use sapling_crypto::bellman::Circuit;
-    use sapling_crypto::circuit::test::TestConstraintSystem;
+    use bellman::Circuit;
+    use pairing::bn256::{Bn256, Fr};
 
     pub struct PolynomialMultiplier<E: Engine> {
         pub a: Vec<E::Fr>,

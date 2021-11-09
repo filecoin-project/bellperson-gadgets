@@ -1,15 +1,15 @@
-use sapling_crypto::alt_babyjubjub::AltJubjubBn256;
-use sapling_crypto::bellman::pairing::bls12_381::Bls12;
-use sapling_crypto::bellman::pairing::bn256::Bn256;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::ConstraintSystem;
-use sapling_crypto::circuit::num::AllocatedNum;
-use sapling_crypto::group_hash::Keccak256Hasher;
-use sapling_crypto::jubjub::{JubjubBls12, JubjubEngine};
-use sapling_crypto::poseidon::{
+use crate::alt_babyjubjub::AltJubjubBn256;
+use crate::circuit::num::AllocatedNum;
+use crate::group_hash::Keccak256Hasher;
+use crate::jubjub::{JubjubBls12, JubjubEngine};
+use crate::poseidon::{
     bls12::Bls12PoseidonParams, bn256::Bn256PoseidonParams, PoseidonEngine, PoseidonHashParams,
     QuinticSBox,
 };
+use bellman::ConstraintSystem;
+use pairing::bls12_381::Bls12;
+use pairing::bn256::Bn256;
+use pairing::Engine;
 
 use std::default::Default;
 use std::marker::PhantomData;
@@ -59,13 +59,13 @@ where
     type F = E::Fr;
 
     fn hash(&self, inputs: &[E::Fr]) -> E::Fr {
-        use sapling_crypto::poseidon::poseidon_hash;
+        use crate::poseidon::poseidon_hash;
         assert_eq!(self.params.output_len(), 1);
         poseidon_hash::<E>(&self.params, inputs).pop().unwrap()
     }
 
     fn hash2(&self, a: Self::F, b: Self::F) -> Self::F {
-        use sapling_crypto::poseidon::poseidon_hash;
+        use crate::poseidon::poseidon_hash;
         poseidon_hash::<E>(&self.params, &[a, b]).pop().unwrap()
     }
 }
@@ -82,9 +82,9 @@ where
 impl<E: JubjubEngine> Hasher for Pedersen<E> {
     type F = E::Fr;
     fn hash2(&self, a: Self::F, b: Self::F) -> Self::F {
-        use sapling_crypto::bellman::pairing::ff::PrimeField;
-        use sapling_crypto::pedersen_hash::pedersen_hash;
-        use sapling_crypto::pedersen_hash::Personalization;
+        use crate::pedersen_hash::pedersen_hash;
+        use crate::pedersen_hash::Personalization;
+        use ff::PrimeField;
         let mut bits: Vec<bool> = Vec::new();
         for i in &[a, b] {
             bits.extend(
@@ -188,7 +188,7 @@ where
         a: &AllocatedNum<Self::E>,
         b: &AllocatedNum<Self::E>,
     ) -> CResult<AllocatedNum<E>> {
-        use sapling_crypto::circuit::poseidon_hash::poseidon_hash;
+        use crate::circuit::poseidon_hash::poseidon_hash;
         assert_eq!(self.params.output_len(), 1);
         Ok(
             poseidon_hash::<E, CS>(cs, &[a.clone(), b.clone()], &self.params)?
@@ -201,7 +201,7 @@ where
         cs: CS,
         inputs: &[AllocatedNum<Self::E>],
     ) -> CResult<AllocatedNum<E>> {
-        use sapling_crypto::circuit::poseidon_hash::poseidon_hash;
+        use crate::circuit::poseidon_hash::poseidon_hash;
         assert_eq!(self.params.output_len(), 1);
         Ok(poseidon_hash::<E, CS>(cs, inputs, &self.params)?
             .pop()
@@ -220,9 +220,9 @@ where
         a: &AllocatedNum<Self::E>,
         b: &AllocatedNum<Self::E>,
     ) -> CResult<AllocatedNum<E>> {
-        use sapling_crypto::circuit::boolean::Boolean;
-        use sapling_crypto::circuit::pedersen_hash::pedersen_hash;
-        use sapling_crypto::pedersen_hash::Personalization;
+        use crate::circuit::boolean::Boolean;
+        use crate::circuit::pedersen_hash::pedersen_hash;
+        use crate::pedersen_hash::Personalization;
         let mut bits: Vec<Boolean> = Vec::new();
         for (i, in_) in [a, b].iter().enumerate() {
             bits.extend(in_.into_bits_le(cs.namespace(|| format!("bit split {}", i)))?);

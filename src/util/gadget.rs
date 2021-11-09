@@ -1,9 +1,8 @@
-use sapling_crypto::bellman::pairing::ff::ScalarEngine;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
-use sapling_crypto::circuit::num::AllocatedNum;
-
+use crate::circuit::num::AllocatedNum;
 use crate::hash::circuit::CircuitHasher;
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use ff::ScalarEngine;
+use pairing::Engine;
 
 use super::bit::Bit;
 use crate::OptionExt;

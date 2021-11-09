@@ -1,10 +1,10 @@
-use sapling_crypto::bellman::ConstraintSystem;
-use sapling_crypto::circuit::baby_eddsa::EddsaSignature;
-use sapling_crypto::circuit::ecc::EdwardsPoint;
-use sapling_crypto::circuit::num::AllocatedNum;
-use sapling_crypto::eddsa::{PublicKey, Signature};
-use sapling_crypto::jubjub::edwards::Point;
-use sapling_crypto::jubjub::JubjubEngine;
+use crate::circuit::baby_eddsa::EddsaSignature;
+use crate::circuit::ecc::EdwardsPoint;
+use crate::circuit::num::AllocatedNum;
+use crate::eddsa::{PublicKey, Signature};
+use crate::jubjub::edwards::Point;
+use crate::jubjub::JubjubEngine;
+use bellman::ConstraintSystem;
 
 use crate::util::convert::{f_to_nat, nat_to_f};
 use crate::CResult;

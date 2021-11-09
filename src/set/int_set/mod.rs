@@ -1,6 +1,6 @@
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use pairing::Engine;
 use rug::{ops::Pow, Integer};
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
 
 use std::collections::BTreeMap;
 use std::fmt::Debug;

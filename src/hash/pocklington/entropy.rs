@@ -1,7 +1,7 @@
-use sapling_crypto::bellman::pairing::ff::{Field, PrimeField, ScalarEngine};
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
-use sapling_crypto::circuit::num::AllocatedNum;
+use crate::circuit::num::AllocatedNum;
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use ff::{Field, PrimeField, ScalarEngine};
+use pairing::Engine;
 
 use super::super::hashes::mimc;
 use crate::mp::bignat::BigNat;
@@ -148,7 +148,7 @@ pub mod helper {
     use super::NatTemplate;
     use rug::Integer;
 
-    use sapling_crypto::bellman::pairing::ff::PrimeField;
+    use ff::PrimeField;
 
     use crate::hash::hashes::mimc;
     use crate::util::convert::f_to_nat;

@@ -1,8 +1,8 @@
+use crate::circuit::num::AllocatedNum;
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError, Variable};
+use ff::{Field, PrimeField, PrimeFieldRepr};
+use pairing::Engine;
 use rug::Integer;
-use sapling_crypto::bellman::pairing::ff::{Field, PrimeField, PrimeFieldRepr};
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError, Variable};
-use sapling_crypto::circuit::num::AllocatedNum;
 
 use std::convert::From;
 

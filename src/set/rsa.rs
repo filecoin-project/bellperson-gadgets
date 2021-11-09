@@ -1,8 +1,8 @@
+use crate::circuit::num::AllocatedNum;
+use bellman::{Circuit, ConstraintSystem, LinearCombination, SynthesisError};
+use ff::{PrimeField, ScalarEngine};
+use pairing::Engine;
 use rug::Integer;
-use sapling_crypto::bellman::pairing::ff::{PrimeField, ScalarEngine};
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{Circuit, ConstraintSystem, LinearCombination, SynthesisError};
-use sapling_crypto::circuit::num::AllocatedNum;
 
 use std::fmt::{self, Debug, Formatter};
 

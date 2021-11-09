@@ -1,7 +1,7 @@
-use sapling_crypto::bellman::pairing::ff::{Field, PrimeField};
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, SynthesisError};
-use sapling_crypto::circuit::num::{AllocatedNum, Num};
+use crate::circuit::num::{AllocatedNum, Num};
+use bellman::{ConstraintSystem, SynthesisError};
+use ff::{Field, PrimeField};
+use pairing::Engine;
 
 use crate::OptionExt;
 
@@ -217,8 +217,8 @@ pub fn hash<E: Engine, CS: ConstraintSystem<E>>(
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::circuit::boolean::Boolean;
     use crate::util::test_helpers::*;
-    use sapling_crypto::circuit::boolean::Boolean;
 
     pub struct MimcInputs<'a> {
         pub input: &'a str,

@@ -7,8 +7,8 @@ use bellperson_gadgets::set::int_set::ExpSet;
 use bellperson_gadgets::set::rsa::SetBenchInputs;
 use bellperson_gadgets::util::verbose;
 use docopt::Docopt;
-use sapling_crypto::bellman::pairing::bls12_381::Bls12;
-use sapling_crypto::bellman::pairing::Engine;
+use pairing::bls12_381::Bls12;
+use pairing::Engine;
 use serde::Deserialize;
 
 const USAGE: &str = "

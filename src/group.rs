@@ -1,6 +1,6 @@
+use bellman::{ConstraintSystem, LinearCombination, SynthesisError};
+use pairing::Engine;
 use rug::Integer;
-use sapling_crypto::bellman::pairing::Engine;
-use sapling_crypto::bellman::{ConstraintSystem, LinearCombination, SynthesisError};
 
 use std::cmp::{min, Eq, PartialEq};
 use std::fmt::{self, Debug, Display, Formatter};
